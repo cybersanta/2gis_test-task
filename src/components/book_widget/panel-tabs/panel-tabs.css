@@ -1,0 +1,25 @@
+/* .panel-tabs {
+    
+} */
+
+.btn-group {
+    margin: 0;
+
+}
+
+.filter-btn {
+    width: calc(100% / 3);
+    height: 2.5rem;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.active {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* .filter-btn :focus {
+    background-color: red;
+} */

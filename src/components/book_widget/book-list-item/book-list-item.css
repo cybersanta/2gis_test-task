@@ -1,0 +1,39 @@
+.book-list-item {
+    padding: 10px;
+    border-top: #999 solid 1px;
+}
+
+.book-title {
+    font-weight: 600;
+    max-width: 80%;
+}
+
+.book-line {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 6px; 
+}
+
+.book-status {
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+    -webkit-user-select: none;
+}
+
+.book-description {
+    padding-bottom: 8px;
+}
+
+.book-list-tags {
+    /* display: block; */
+    display: flex;
+    
+}
+
+.tag-item {
+    background-color: #ddd;
+    margin: 0 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+}
