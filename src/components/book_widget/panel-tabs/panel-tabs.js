@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { changeFilter } from '../../../actions/filter'
-// import { VisibilityFilters } from '../../../actions/filter'
 import './panel-tabs.css';
 
 import { Link } from 'react-router-dom'
-// import { compose } from '../../../utils'
+
 
 const FILTER_BTN = [
     {
