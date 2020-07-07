@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import BookList from './book-list';
+import TagsFilterList from './tags-filter-list'
 import PanelTabs from './panel-tabs';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
@@ -37,9 +38,32 @@ class BookWidget extends Component {
         }
     }
 
+
+    filtredBooksByTag = (books, filter) => {
+
+        let newBooks = books.filter(book => book.tags.includes(filter[0]))
+
+        switch (filter.length) {
+            case 0:
+              return newBooks
+            default:
+                for (let i = 1; i < filter.length; i++) {
+                    newBooks = newBooks.filter(book => book.tags.includes(filter[i]))  
+                }
+                return newBooks     
+          }
+
+
+    }
+
     render() {
         const { books, isLoading, error, byStatus, byTags } = this.props
-        const filtredBooks = this.filtredBooks(books, byStatus)
+
+        let filtredBooks = this.filtredBooks(books, byStatus)
+
+        if(byTags.length !== 0) {
+            filtredBooks = this.filtredBooksByTag(this.filtredBooks(books, byStatus), byTags)
+        }
 
         if (isLoading) {
             return <Spinner />;
@@ -57,6 +81,7 @@ class BookWidget extends Component {
                                 inProgress={this.filtredBooks(books, 'inProgress').length}
                                 done={this.filtredBooks(books, 'done').length}
                     />
+                    { byTags.length !== 0 && <TagsFilterList filterTags={byTags} />}
                     <BookList   books={filtredBooks} 
                                 filter={byStatus}
                     />

@@ -38,19 +38,19 @@ const bookList = (state = BOOCK_LIST.bookList , action) => {
         case 'ADD_TO_PROGRESS':
           return {
             ...state,
-            books: toggleStatus(state.books, action.id, 'inProgress')
+            books: toggleStatus(state.books, action.payload, 'inProgress')
           }
 
         case 'ADD_TO_DONE':
           return {
             ...state,
-            books: toggleStatus(state.books, action.id, 'done')
+            books: toggleStatus(state.books, action.payload, 'done')
           }
 
         case 'ADD_TO_READ':
           return {
             ...state,
-            books: toggleStatus(state.books, action.id, 'toRead')
+            books: toggleStatus(state.books, action.payload, 'toRead')
           }
     
         default:

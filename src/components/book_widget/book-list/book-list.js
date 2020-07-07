@@ -1,6 +1,8 @@
 import React from 'react';
 import BookListItem from '../book-list-item';
 // import { addToProgress, addToDone, addToRead } from '../../../actions/filter'
+import { addTagFilter } from '../../../actions/filter'
+import { connect } from 'react-redux'
 
 import './book-list.css';
 
@@ -19,10 +21,11 @@ const BookList = ({books, filter}) => {
             {
                 books.map((book, id) => {
                     return (
-                        <li key={book.id}>
+                        <li key={id}>
                             <BookListItem
                                 book={book}
                                 filter={filter}
+                                // addTagFilter={addTagFilter}
                             />
 
                         </li>
@@ -34,4 +37,4 @@ const BookList = ({books, filter}) => {
     );
 };
 
-export default BookList
+export default connect(null, { addTagFilter })(BookList)
