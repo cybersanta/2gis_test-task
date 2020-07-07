@@ -1,5 +1,5 @@
 # 2gis_test-task 
-Tets task Frontend developer (React) junior 
+Tets task Frontend developer (React) junior.  
 The job https://novosibirsk.hh.ru/vacancy/37381066
 
 ### `npm start`
