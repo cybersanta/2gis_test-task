@@ -82,9 +82,7 @@ class BookWidget extends Component {
                                 done={this.filtredBooks(books, 'done').length}
                     />
                     { byTags.length !== 0 && <TagsFilterList filterTags={byTags} />}
-                    <BookList   books={filtredBooks} 
-                                filter={byStatus}
-                    />
+                    <BookList   books={filtredBooks} />
                 </div>
             </React.Fragment>
         )

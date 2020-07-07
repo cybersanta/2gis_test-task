@@ -1,12 +1,27 @@
 import React from 'react';
 import BookListItem from '../book-list-item';
-// import { addToProgress, addToDone, addToRead } from '../../../actions/filter'
-import { addTagFilter } from '../../../actions/filter'
+
+import { addToProgress, addToDone, addToRead, addTagFilter } from '../../../actions/filter'
 import { connect } from 'react-redux'
 
 import './book-list.css';
 
-const BookList = ({books, filter}) => {
+const BookList = ({books, byStatus, addTagFilter, addToProgress, addToDone, addToRead}) => {
+
+    let action;
+
+    switch(byStatus) {
+        case "toRead":
+            action = addToProgress
+            break;
+        case "inProgress":
+            action =  addToDone
+            break;
+        case "done":
+            action =  addToRead
+            break
+        default: break;
+    }
 
 
     if (books.length === 0) {
@@ -24,8 +39,8 @@ const BookList = ({books, filter}) => {
                         <li key={id}>
                             <BookListItem
                                 book={book}
-                                filter={filter}
-                                // addTagFilter={addTagFilter}
+                                action={action}
+                                addTagFilter={addTagFilter}
                             />
 
                         </li>
@@ -37,4 +52,8 @@ const BookList = ({books, filter}) => {
     );
 };
 
-export default connect(null, { addTagFilter })(BookList)
+const mapStateToProps = ({filter: {byStatus}}) => {
+    return { byStatus }
+}
+
+export default connect(mapStateToProps, { addTagFilter, addToProgress, addToDone, addToRead })(BookList)

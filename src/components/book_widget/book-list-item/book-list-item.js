@@ -1,11 +1,8 @@
 import React from 'react';
 import './book-list-item.css';
-import { connect } from 'react-redux'
-import { addToProgress, addToDone, addToRead, addTagFilter } from '../../../actions/filter'
 
 
-
-const BookListItem = ({book, filter, addToProgress, addToDone, addToRead, addTagFilter}) => {
+const BookListItem = ({book, addTagFilter, action}) => {
     const {id, author, title, description, tags, status} = book;
 
 
@@ -16,17 +13,7 @@ const BookListItem = ({book, filter, addToProgress, addToDone, addToRead, addTag
                 <div className="book-line">
                     <span className="book-title">{title}</span>
                     <span className="book-status" 
-                          onClick={() => {
-                              switch(filter) {
-                                    case "toRead":
-                                        return addToProgress(id)
-                                    case "inProgress":
-                                        return addToDone(id)
-                                    case "done":
-                                        return addToRead(id)
-                                    default: return
-                              }
-                            }}
+                          onClick={() => action(id)}
                     >
                             {status === 'toRead' ? `start reading ->` : null}
                             {status === 'inProgress' ? `finish reading ->` : null}
@@ -56,4 +43,4 @@ const BookListItem = ({book, filter, addToProgress, addToDone, addToRead, addTag
 
 
 
-export default connect(null, {addToProgress, addToDone, addToRead, addTagFilter})(BookListItem)
+export default BookListItem
