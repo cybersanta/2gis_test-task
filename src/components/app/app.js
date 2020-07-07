@@ -7,10 +7,7 @@ import './app.css';
 
 const App = () => {
   return (
-      <Route  path="/:params?"
-              component={BookWidget}
-              />
-       
+      <Route  path="/" component={BookWidget}/>
   )
 };
 

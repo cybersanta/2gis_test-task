@@ -4,6 +4,9 @@ import { changeFilter } from '../../../actions/filter'
 // import { VisibilityFilters } from '../../../actions/filter'
 import './panel-tabs.css';
 
+import { Link } from 'react-router-dom'
+// import { compose } from '../../../utils'
+
 const FILTER_BTN = [
     {
         text: 'To read',
@@ -21,6 +24,7 @@ const FILTER_BTN = [
 
 
 
+
 const PanelTabs = ({activeFilter, changeFilter, toRead, inProgress, done}) => {
 
     return(
@@ -28,14 +32,15 @@ const PanelTabs = ({activeFilter, changeFilter, toRead, inProgress, done}) => {
         <div className="btn-group">
             {
                 FILTER_BTN.map(({text, id}) => (
-                    <button key={id}
-                            onClick={() => (changeFilter(id))}
-                            className={id === activeFilter ? 'filter-btn active' : 'filter-btn'}
+                    <Link to={`/?tab=${id}`}
+                          key={id}
+                          onClick={() => (changeFilter(id))}
+                          className={id === activeFilter ? 'filter-btn active' : 'filter-btn'}
                     >
                         {id === 'toRead' ? `${text} (${toRead})` : null}
                         {id === 'inProgress' ? `${text} (${inProgress})` : null}
                         {id === 'done' ? `${text} (${done})` : null}
-                    </button>
+                    </Link>
                 ))
             }
         </div>

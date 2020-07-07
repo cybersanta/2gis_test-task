@@ -11,6 +11,7 @@ import ErrorIndicator from '../error-indicator';
 import { withBookStoreService } from '../hoc';
 import { fetchBooks } from '../../actions/book-list';
 
+
 import { compose } from '../../utils';
 
 import './main.css';
@@ -22,7 +23,6 @@ class BookWidget extends Component {
         if(this.props.books.length === 0) {
             this.props.fetchBooks();
         }
-
     }
 
     filtredBooks = (books, filter) => {
@@ -58,6 +58,7 @@ class BookWidget extends Component {
 
     render() {
         const { books, isLoading, error, byStatus, byTags } = this.props
+
 
         let filtredBooks = this.filtredBooks(books, byStatus)
 
